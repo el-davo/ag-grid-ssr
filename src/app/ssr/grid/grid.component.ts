@@ -25,6 +25,11 @@ export class GridComponent implements OnInit {
 
   gridReady(params: any): void {
     params.api.sizeColumnsToFit();
+
+    setInterval(() => {
+      console.log('Refresh');
+      params.api.refreshServerSideStore();
+    }, 10000);
   }
 
 }

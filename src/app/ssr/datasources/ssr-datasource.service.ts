@@ -6,21 +6,25 @@ import {IServerSideDatasource, IServerSideGetRowsParams} from 'ag-grid-community
 })
 export class SsrDatasourceService implements IServerSideDatasource {
 
+  rowData = [
+    {make: 'Toyota', model: 'Celica', price: 50},
+    {make: 'Ford', model: 'Mondeo', price: 32000},
+    {make: 'Porsche', model: 'Boxter', price: 72000},
+    {make: 'Honda', model: 'Boxter', price: 72000},
+    {make: 'Mazda', model: 'Boxter', price: 72000},
+  ];
+
   constructor() {
+    setInterval(() => {
+      this.rowData.push(...this.rowData);
+    }, 9000);
   }
 
   getRows(params: IServerSideGetRowsParams): void {
-    console.log(params);
     setTimeout(() => {
       params.success({
-        rowCount: 1000,
-        rowData: [
-          {make: 'Toyota', model: 'Celica', price: 35000},
-          {make: 'Ford', model: 'Mondeo', price: 32000},
-          {make: 'Porsche', model: 'Boxter', price: 72000},
-          {make: 'Honda', model: 'Boxter', price: 72000},
-          {make: 'Mazda', model: 'Boxter', price: 72000},
-        ]
+        rowCount: this.rowData.length,
+        rowData: this.rowData
       });
     }, 2000);
   }
