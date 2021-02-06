@@ -1,0 +1,13 @@
+<ag-grid-angular
+  class="ag-theme-alpine-dark"
+  rowModelType="serverSide"
+  suppressHorizontalScroll="true"
+  serverSideStoreType="partial"
+  debug="true"
+  [serverSideDatasource]="datasource"
+  [statusBar]="statusBar"
+  (gridReady)="gridReady($event)">
+  <ag-grid-column headerName="Make" field="make"></ag-grid-column>
+  <ag-grid-column headerName="Model" field="model"></ag-grid-column>
+  <ag-grid-column headerName="Price" field="price"></ag-grid-column>
+</ag-grid-angular>
