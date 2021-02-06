@@ -3,6 +3,9 @@
   rowModelType="serverSide"
   suppressHorizontalScroll="true"
   serverSideStoreType="partial"
+  cacheBlockSize="5"
+  maxBlocksInCache="2"
+  (modelUpdated)="modelUpdated($event)"
   [serverSideDatasource]="datasource"
   [statusBar]="statusBar"
   (gridReady)="gridReady($event)">

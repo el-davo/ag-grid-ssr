@@ -1,35 +1,42 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {SsrDatasourceService} from '../datasources/ssr-datasource.service';
+import {interval, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss']
 })
-export class GridComponent implements OnInit {
+export class GridComponent implements OnDestroy {
+
+  destroy$ = new Subject();
 
   statusBar = {
     statusPanels: [
       {
         statusPanel: 'agTotalRowCountComponent',
-        align: 'center'
-      },
-    ],
+        align: 'center',
+      }
+    ]
   };
 
   constructor(public datasource: SsrDatasourceService) {
   }
 
-  ngOnInit(): void {
-  }
-
   gridReady(params: any): void {
     params.api.sizeColumnsToFit();
 
-    setInterval(() => {
-      console.log('Refresh');
-      params.api.refreshServerSideStore();
-    }, 10000);
+    interval(5000).pipe(takeUntil(this.destroy$)).subscribe(() => params.api.refreshServerSideStore());
+  }
+
+  modelUpdated(params: any): void {
+    console.log(params.api.getDisplayedRowCount());
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

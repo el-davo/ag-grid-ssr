@@ -1,16 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-ssr',
   templateUrl: './ssr.component.html',
   styleUrls: ['./ssr.component.scss']
 })
-export class SsrComponent implements OnInit {
+export class SsrComponent {
 
   constructor() {
-  }
-
-  ngOnInit() {
   }
 
 }
