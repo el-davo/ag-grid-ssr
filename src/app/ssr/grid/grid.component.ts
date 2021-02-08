@@ -12,15 +12,6 @@ export class GridComponent implements OnDestroy {
 
   destroy$ = new Subject();
 
-  statusBar = {
-    statusPanels: [
-      {
-        statusPanel: 'agTotalRowCountComponent',
-        align: 'center',
-      }
-    ]
-  };
-
   constructor(public datasource: SsrDatasourceService) {
   }
 
@@ -28,10 +19,6 @@ export class GridComponent implements OnDestroy {
     params.api.sizeColumnsToFit();
 
     interval(5000).pipe(takeUntil(this.destroy$)).subscribe(() => params.api.refreshServerSideStore());
-  }
-
-  modelUpdated(params: any): void {
-    console.log(params.api.getDisplayedRowCount());
   }
 
   ngOnDestroy(): void {
