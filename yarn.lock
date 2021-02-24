@@ -1333,6 +1333,13 @@
   dependencies:
     tslib "^2.0.0"
 
+"@ngrx/store-devtools@^11.0.1":
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-11.0.1.tgz#64b332f64e73538e7facb9d9d7e5f66c7ff1b834"
+  integrity sha512-ez4GW08lqJonvLVtlWM/4MJY/oHFFItMtreOtE/US+yAPuDZTnhmfjX9hqk3ySkX+drPjOfeqQ+vTYCkbmgwrw==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/store@^10.1.2":
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-10.1.2.tgz#a41aee81ea7b7e4a9f927be560e6024830211efb"

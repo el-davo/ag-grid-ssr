@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./ssr/ssr.module').then(m => m.SsrModule)
   },
   {
+    path: 'ssr-tree',
+    loadChildren: () => import('./ssr-tree/ssr-tree.module').then(m => m.SsrTreeModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: '/ssr'

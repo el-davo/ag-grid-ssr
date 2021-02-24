@@ -1,0 +1,13 @@
+<ag-grid-angular
+  class="ag-theme-alpine-dark"
+  rowModelType="serverSide"
+  serverSideStoreType="partial"
+  treeData="true"
+  [serverSideDatasource]="datasource"
+  (gridReady)="gridReady($event)"
+  [isServerSideGroup]="isServerSideGroup"
+  [getServerSideGroupKey]="getServerSideGroupKey"
+  [autoGroupColumnDef]="autoGroupColumnDef">
+  <ag-grid-column headerName="Total Files" field="numberOfFiles" resizable="true"></ag-grid-column>
+  <ag-grid-column headerName="Total Files" field="numberOfFiles" resizable="true"></ag-grid-column>
+</ag-grid-angular>
