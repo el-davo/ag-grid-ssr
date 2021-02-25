@@ -7,6 +7,19 @@ import * as actions from './ssr-tree.actions';
 @Injectable()
 export class SsrTreeEffects {
 
+  fetchRoots$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(actions.fetchRoots),
+      mergeMap(({endRow, success}) =>
+        this.service.getRoots(endRow).pipe(
+          tap((page) => {
+            console.log(page);
+            success(page);
+          }),
+        )
+      )
+    ), {dispatch: false});
+
   fetchPage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.fetchPage),

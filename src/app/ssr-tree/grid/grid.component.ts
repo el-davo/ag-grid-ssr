@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SsrTreeDatasourceService} from '../datasources/ssr-tree-datasource.service';
 import {TreeNode} from '../tree-node.model';
-import {Subject} from 'rxjs';
+import {interval, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-grid',
@@ -29,6 +30,11 @@ export class GridComponent implements OnInit, OnDestroy {
 
   gridReady(params: any): void {
     params.api.sizeColumnsToFit();
+
+    interval(5000).pipe(takeUntil(this.destroy$)).subscribe(() => params.api.refreshServerSideStore({
+      route: [],
+      purge: false
+    }));
   }
 
   isServerSideGroup(treeNode: TreeNode): boolean {
@@ -39,9 +45,19 @@ export class GridComponent implements OnInit, OnDestroy {
     return treeNode.id;
   }
 
+  getServerSideStoreParams(params: any): any {
+    return {
+      storeType: params.level > 0 ? 'partial' : 'full',
+      cacheBlockSize: 1,
+    };
+  }
+
+  getRowNodeId(row: TreeNode): string {
+    return row.id;
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
 }

@@ -1,8 +1,12 @@
 <ag-grid-angular
   class="ag-theme-alpine-dark"
   rowModelType="serverSide"
-  serverSideStoreType="partial"
   treeData="true"
+  serverSideStoreType="partial"
+  cacheBlockSize="3"
+  enableCellChangeFlash="true"
+  [getRowNodeId]="getRowNodeId"
+  [getServerSideStoreParams]="getServerSideStoreParams"
   [serverSideDatasource]="datasource"
   (gridReady)="gridReady($event)"
   [isServerSideGroup]="isServerSideGroup"
