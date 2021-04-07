@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./ssr-tree/ssr-tree.module').then(m => m.SsrTreeModule)
   },
   {
+    path: 'tree-search',
+    loadChildren: () => import('./tree-search/tree-search.module').then(m => m.TreeSearchModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: '/ssr'

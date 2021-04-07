@@ -1,0 +1,11 @@
+<ag-grid-angular
+  class="ag-theme-alpine-dark"
+  [treeData]="true"
+  [rowData]="tree$ | async"
+  [getDataPath]="getDataPath"
+  [columnDefs]="columnDefs"
+  [autoGroupColumnDef]="autoGroupColumnDef"
+  (gridReady)="gridReady($event)"
+  [getRowNodeId]="getRowNodeId"
+  (cellDoubleClicked)="expand($event)">
+</ag-grid-angular>

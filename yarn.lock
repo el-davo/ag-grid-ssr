@@ -38,7 +38,7 @@
   dependencies:
     "@ag-grid-community/core" "~25.0.0"
 
-"@ag-grid-enterprise/all-modules@^25.0.1":
+"@ag-grid-enterprise/all-modules@25.0.1":
   version "25.0.1"
   resolved "https://registry.yarnpkg.com/@ag-grid-enterprise/all-modules/-/all-modules-25.0.1.tgz#d4f8160c5371107d645463d641291d4dc20c59ce"
   integrity sha512-IEr87/EGbRFQo6j9UefIljfqUIYXhsqDcNemXVn0k5NHWlQOwDYPEttAtF2RreGsSq7oNSTrmzrAXQTGivpPww==
