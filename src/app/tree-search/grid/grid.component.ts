@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {ModuleState} from '../store/module.state';
 import * as actions from '../store/tree-search.actions';
 import {Observable} from 'rxjs';
 import {TreeNode} from '../tree-node.model';
+import {AgGridAngular} from 'ag-grid-angular';
 
 @Component({
   selector: 'app-grid',
@@ -11,6 +12,8 @@ import {TreeNode} from '../tree-node.model';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent implements OnInit {
+
+  @ViewChild('grid', {static: false}) grid: AgGridAngular | undefined;
 
   tree$: Observable<TreeNode[]> | undefined;
 
@@ -45,6 +48,12 @@ export class GridComponent implements OnInit {
 
   expand(node: any): void {
     this.store.dispatch(actions.fetchSubDirs({rootId: node.data.id}));
+  }
+
+  search(term: string): void {
+    console.log(term);
+    this.grid?.api.expandAll();
+    this.grid?.api.setQuickFilter(term);
   }
 
 }

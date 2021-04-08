@@ -1,5 +1,9 @@
+<input placeholder="search" (keyup)="search($event.target.value)"/>
+
 <ag-grid-angular
+  #grid
   class="ag-theme-alpine-dark"
+  immutableData="true"
   [treeData]="true"
   [rowData]="tree$ | async"
   [getDataPath]="getDataPath"
