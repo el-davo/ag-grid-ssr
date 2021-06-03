@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'tree-search',
     loadChildren: () => import('./tree-search/tree-search.module').then(m => m.TreeSearchModule)
+  },
+  {
+    path: 'local-storage',
+    loadChildren: () => import('./local-storage/local-storage.module').then(m => m.LocalStorageModule)
   },
   {
     path: '',

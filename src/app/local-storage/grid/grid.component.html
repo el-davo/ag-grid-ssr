@@ -1,0 +1,15 @@
+<ag-grid-angular #grid class="ag-theme-alpine-dark" suppressHorizontalScroll="true" [rowData]="rowData"
+                 sideBar="columns" (gridReady)="gridReady()" (sortChanged)="sortChanged()">
+  <ag-grid-column field="make"
+                  headerName="Make"
+                  sortable="true"
+                  [menuTabs]="['columnsMenuTab']"></ag-grid-column>
+  <ag-grid-column field="model"
+                  headerName="Make"
+                  sortable="true"
+                  [menuTabs]="['columnsMenuTab']"></ag-grid-column>
+  <ag-grid-column field="price"
+                  headerName="Price"
+                  sortable="true"
+                  [menuTabs]="['columnsMenuTab']"></ag-grid-column>
+</ag-grid-angular>

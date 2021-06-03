@@ -50,10 +50,9 @@ export class GridComponent implements OnInit {
     this.store.dispatch(actions.fetchSubDirs({rootId: node.data.id}));
   }
 
-  search(term: string): void {
-    console.log(term);
+  search(event: KeyboardEvent): void {
     this.grid?.api.expandAll();
-    this.grid?.api.setQuickFilter(term);
+    this.grid?.api.setQuickFilter((event.target as HTMLInputElement).value);
   }
 
 }
